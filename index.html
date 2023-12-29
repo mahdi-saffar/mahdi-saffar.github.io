@@ -1,348 +1,134 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine Learning Engineer Portfolio</title>
   <style>
-    * {
+    /* Basic Reset */
+    body, h1, h2, h3, p, figure, figcaption {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
-
+    
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #333;
       background-color: #fff;
     }
-
+    
+    /* Container for content */
     .container {
-      max-width: 1200px;
-      margin: 0 auto;
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
     }
-
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px;
+    
+    /* Header */
+    header {
+      background: #333;
+      color: #fff;
+      padding-top: 30px;
+      min-height: 70px;
+      border-bottom: #ccc 1px solid;
     }
-
-    .navbar-brand {
-      font-size: 24px;
-      font-weight: bold;
+    
+    header a {
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
     }
-
-    .navbar-nav {
+    
+    header ul {
+      padding: 0;
       list-style: none;
-      display: flex;
+    }
+    
+    header ul li {
+      display: inline;
+      padding: 0 20px;
     }
 
-    .navbar-nav li {
-      margin-left: 20px;
+    /* Main Sections */
+    .about, .skills, .projects, .contact {
+      padding: 20px 0;
+      border-bottom: 1px solid #ccc;
     }
 
-    .navbar-nav a {
-      text-decoration: none;
-      color: #000;
-    }
-
-    .navbar-nav a:hover {
-      color: #777;
-    }
-
-    .hero {
-      height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 40px;
-    }
-
-    .hero a {
-      display: inline-block;
-      padding: 10px 20px;
-      border: 2px solid #000;
-      text-decoration: none;
-      color: #000;
-    }
-
-    .hero a:hover {
-      background-color: #000;
-      color: #fff;
-    }
-
-    .about {
-      padding: 60px 0;
-    }
-
-    .about h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .about p {
-      font-size: 18px;
-      line-height: 1.5;
-      margin-bottom: 40px;
-      text-align: justify;
-    }
-
-    .about .row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .about .col-6 {
-      width: 48%;
-    }
-
-    .about img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    .services {
-      padding: 60px 0;
-      background-color: #f0f0f0;
-    }
-
-    .services h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .services .row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 40px;
-    }
-
-    .services .col-4 {
-      width: 30%;
-    }
-
-    .services .icon {
-      font-size: 48px;
-      color: #000;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .services .title {
-      font-size: 24px;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .services .desc {
-      font-size: 18px;
-      text-align: center;
-    }
-
-    .portfolio {
-      padding: 60px 0;
-    }
-
-    .portfolio h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .portfolio .row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .portfolio .col-3 {
-      width: 23%;
-      margin-bottom: 20px;
-    }
-
-    .portfolio img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    .contact {
-      padding: 60px 0;
-      background-color: #f0f0f0;
-    }
-
-    .contact h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .contact form {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .contact .form-group {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .contact .form-group label {
-      width: 20%;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .contact .form-group input,
-    .contact .form-group textarea {
-      width: 75%;
-      padding: 10px;
-      border: 2px solid #000;
-      font-size: 18px;
-    }
-
-    .contact .form-group input:focus,
-    .contact .form-group textarea:focus {
-      outline: none;
-      border-color: #777;
-    }
-
-    .contact .form-group textarea {
-      height: 100px;
-      resize: none;
-    }
-
-    .contact .form-group button {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      background-color: #000;
-      color: #fff;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .contact .form-group button:hover {
-      background-color: #777;
-    }
-
-    .footer {
-      padding: 20px;
-      background-color: #000;
+    /* Footer */
+    footer {
+      background: #333;
       color: #fff;
       text-align: center;
+      padding: 10px 0;
     }
-
-    .footer p {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .footer a {
-      text-decoration: none;
-      color: #fff;
-    }
-
-    .footer a:hover {
-      color: #777;
-    }
-
-    @media (max-width: 768px) {
-      .navbar-nav {
-        flex-direction: column;
+    
+    /* Media Queries */
+    @media(max-width: 768px) {
+      .container {
+        width: 95%;
       }
 
-      .navbar-nav li {
-        margin-left: 0;
-        margin-top: 10px;
-      }
-
-      .about .row {
-        flex-direction: column;
-      }
-
-      .about .col-6 {
-        width: 100%;
-        margin-bottom: 20px;
-      }
-
-      .services .row {
-        flex-direction: column;
-      }
-
-      .services .col-4 {
-        width: 100%;
-        margin-bottom: 20px;
-      }
-
-      .portfolio .col-3 {
-        width: 48%;
+      header ul li {
+        display: block;
+        padding: 10px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="navbar">
-      <div class="navbar-brand">My Portfolio</div>
-      <ul class="navbar-nav">
-        <li><a href="#home">Home</a></li>
+  <header>
+    <div class="container">
+      <h1><a href="#">Your Name</a></h1>
+      <ul>
         <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
-    <div class="hero" id="home">
-      <div class="content">
-        <h1>Hi, I'm a Web Designer</h1>
-        <p>I create beautiful and functional websites using HTML, CSS, and JavaScript.</p>
-        <a href="#portfolio">View My Work</a>
-      </div>
+  </header>
+  
+  <section id="about" class="container">
+    <h2>About Me</h2>
+    <p>
+      Machine Learning Engineer with a passion for solving complex problems using data. Expert in pattern recognition and predictive modeling.
+    </p>
+  </section>
+
+  <section id="skills" class="container">
+    <h2>Skills</h2>
+    <ul>
+      <li>Machine Learning</li>
+      <li>Data Processing</li>
+      <li>Neural Networks</li>
+      <li>Python, R, SQL</li>
+    </ul>
+  </section>
+
+  <section id="projects" class="container">
+    <h2>Projects</h2>
+    <article>
+      <h3>Project 1</h3>
+      <p>Developed an algorithm for...</p>
+    </article>
+    <article>
+      <h3>Project 2</h3>
+      <p>Created a data pipeline for...</p>
+    </article>
+  </section>
+
+  <section id="contact" class="container">
+    <h2>Contact Me</h2>
+    <p>Email: your-email@example.com</p>
+  </section>
+  
+  <footer>
+    <div class="container">
+      &copy; 2023 Your Name
     </div>
-    <div class="about" id="about">
-      <h2>About Me</h2>
-      <p>I'm a passionate web designer with over 5 years of experience in the industry. I love to create websites that are user-friendly, responsive, and aesthetically pleasing. I have worked on various projects for clients from different fields and industries, such as e-commerce, education, entertainment, and more.</p>
-      <div class="row">
-        <div class="col-6">
-          <img src="profile.jpg" alt="Profile Picture">
-        </div>
-        <div class="col-6">
-          <img src="skills.jpg" alt="Skills Chart">
-        </div>
-      </div>
-    </div>
-    <div class="services" id="services">
-      <h2>My Services</h2>
-      <div class="row">
-        <div class="col-4">
-          <div class="icon">💻</div>
-          <div class="title">Web Design</div>
-          <div class="desc">I design websites that are attractive, intuitive, and responsive. I use the latest web design trends and technologies to create websites that suit your needs and preferences.</div>
-        </div>
-        <div class="col-4">
-          <div class="icon">📷</div>
-          <div class="title">Graphic Design</div>
-          <div class="desc">I create graphic design elements such as logos, icons, banners, flyers, and more. I use Adobe Photoshop, Illustrator, and other tools to create stunning visuals for your brand and website.</div>
-        </div>
-        <div class="col-4">
-          <div class="icon">📈</div>
-          <div class="title">SEO Optimization</div>
-          <div class="desc">I optimize your website for search engines, such as Google, Bing, and Yahoo. I use SEO best practices and techniques to improve your website's ranking, visibility, and traffic.</
+  </footer>
+  
+</body>
+</html>
