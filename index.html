@@ -1,276 +1,348 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio Website</title>
   <style>
-    /* Add your custom CSS here */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
-    /* Style the navigation bar */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     .navbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: #333;
-      color: white;
-      padding: 10px;
+      padding: 20px;
     }
 
-    /* Style the navigation links */
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      padding: 10px;
-    }
-
-    /* Change the color of links on hover */
-    .navbar a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-
-    /* Style the active link */
-    .navbar a.active {
-      background-color: #4CAF50;
-      color: white;
-    }
-
-    /* Style the logo */
-    .navbar .logo {
+    .navbar-brand {
       font-size: 24px;
       font-weight: bold;
     }
 
-    /* Style the main content */
-    .main {
+    .navbar-nav {
+      list-style: none;
       display: flex;
-      flex-direction: column;
+    }
+
+    .navbar-nav li {
+      margin-left: 20px;
+    }
+
+    .navbar-nav a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .navbar-nav a:hover {
+      color: #777;
+    }
+
+    .hero {
+      height: 80vh;
+      display: flex;
       align-items: center;
-      margin: 20px;
-    }
-
-    /* Style the introduction section */
-    .intro {
+      justify-content: center;
       text-align: center;
-      max-width: 800px;
     }
 
-    /* Style the introduction heading */
-    .intro h1 {
-      font-size: 36px;
+    .hero h1 {
+      font-size: 48px;
       margin-bottom: 20px;
     }
 
-    /* Style the introduction paragraph */
-    .intro p {
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    .hero a {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 2px solid #000;
+      text-decoration: none;
+      color: #000;
+    }
+
+    .hero a:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .about {
+      padding: 60px 0;
+    }
+
+    .about h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .about p {
       font-size: 18px;
       line-height: 1.5;
+      margin-bottom: 40px;
+      text-align: justify;
     }
 
-    /* Style the skills section */
-    .skills {
+    .about .row {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 20px;
-    }
-
-    /* Style the skill cards */
-    .skill {
-      width: 300px;
-      height: 200px;
-      margin: 10px;
-      border: 1px solid #ddd;
-      box-shadow: 2px 2px 5px #ccc;
-    }
-
-    /* Style the skill images */
-    .skill img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-
-    /* Style the skill titles */
-    .skill h3 {
-      text-align: center;
-      padding: 10px;
-      font-size: 24px;
-    }
-
-    /* Style the projects section */
-    .projects {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 20px;
-    }
-
-    /* Style the project cards */
-    .project {
-      width: 300px;
-      height: 300px;
-      margin: 10px;
-      border: 1px solid #ddd;
-      box-shadow: 2px 2px 5px #ccc;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Style the project images */
-    .project img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-
-    /* Style the project titles */
-    .project h3 {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: rgba(0, 0, 0, 0.8);
-      color: white;
-      padding: 10px;
-      font-size: 20px;
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-
-    /* Add hover effects to the project cards */
-    .project:hover img {
-      transform: scale(1.1);
-    }
-
-    .project:hover h3 {
-      opacity: 1;
-    }
-
-    /* Style the contact section */
-    .contact {
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      margin: 20px;
+      justify-content: space-between;
     }
 
-    /* Style the contact heading */
-    .contact h2 {
-      font-size: 28px;
+    .about .col-6 {
+      width: 48%;
+    }
+
+    .about img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .services {
+      padding: 60px 0;
+      background-color: #f0f0f0;
+    }
+
+    .services h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .services .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .services .col-4 {
+      width: 30%;
+    }
+
+    .services .icon {
+      font-size: 48px;
+      color: #000;
+      text-align: center;
       margin-bottom: 20px;
     }
 
-    /* Style the contact icons */
-    .contact i {
-      font-size: 36px;
-      margin: 10px;
-      color: #333;
+    .services .title {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 10px;
     }
 
-    /* Style the footer */
-    .footer {
-      background-color: #333;
-      color: white;
+    .services .desc {
+      font-size: 18px;
       text-align: center;
+    }
+
+    .portfolio {
+      padding: 60px 0;
+    }
+
+    .portfolio h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .portfolio .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .portfolio .col-3 {
+      width: 23%;
+      margin-bottom: 20px;
+    }
+
+    .portfolio img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .contact {
+      padding: 60px 0;
+      background-color: #f0f0f0;
+    }
+
+    .contact h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .contact form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact .form-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .contact .form-group label {
+      width: 20%;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .contact .form-group input,
+    .contact .form-group textarea {
+      width: 75%;
       padding: 10px;
+      border: 2px solid #000;
+      font-size: 18px;
+    }
+
+    .contact .form-group input:focus,
+    .contact .form-group textarea:focus {
+      outline: none;
+      border-color: #777;
+    }
+
+    .contact .form-group textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    .contact .form-group button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #000;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .contact .form-group button:hover {
+      background-color: #777;
+    }
+
+    .footer {
+      padding: 20px;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .footer a:hover {
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-nav {
+        flex-direction: column;
+      }
+
+      .navbar-nav li {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+
+      .about .row {
+        flex-direction: column;
+      }
+
+      .about .col-6 {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .services .row {
+        flex-direction: column;
+      }
+
+      .services .col-4 {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .portfolio .col-3 {
+        width: 48%;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Create a navigation bar -->
-  <div class="navbar">
-    <a href="#" class="logo">Your Name</a>
-    <a href="#intro" class="active">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
-
-  <!-- Create a main content -->
-  <div class="main">
-    <!-- Create an introduction section -->
-    <div class="intro" id="intro">
-      <h1>Hi, I'm Your Name</h1>
-      <p>I'm a computer engineering student who loves to create web applications and learn new technologies.</p>
+  <div class="container">
+    <div class="navbar">
+      <div class="navbar-brand">My Portfolio</div>
+      <ul class="navbar-nav">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
-
-    <!-- Create a skills section -->
-    <div class="skills" id="skills">
-      <div class="skill">
-        <img src="html.png" alt="HTML">
-        <h3>HTML</h3>
-      </div>
-      <div class="skill">
-        <img src="css.png" alt="CSS">
-        <h3>CSS</h3>
-      </div>
-      <div class="skill">
-        <img src="js.png" alt="JavaScript">
-        <h3>JavaScript</h3>
-      </div>
-      <div class="skill">
-        <img src="react.png" alt="React">
-        <h3>React</h3>
-      </div>
-      <div class="skill">
-        <img src="node.png" alt="Node.js">
-        <h3>Node.js</h3>
-      </div>
-      <div class="skill">
-        <img src="mongo.png" alt="MongoDB">
-        <h3>MongoDB</h3>
+    <div class="hero" id="home">
+      <div class="content">
+        <h1>Hi, I'm a Web Designer</h1>
+        <p>I create beautiful and functional websites using HTML, CSS, and JavaScript.</p>
+        <a href="#portfolio">View My Work</a>
       </div>
     </div>
-
-    <!-- Create a projects section -->
-    <div class="projects" id="projects">
-      <div class="project">
-        <img src="todo.png" alt="To-do List App">
-        <h3>To-do List App</h3>
-      </div>
-      <div class="project">
-        <img src="weather.png" alt="Weather App">
-        <h3>Weather App</h3>
-      </div>
-      <div class="project">
-        <img src="chat.png" alt="Chat App">
-        <h3>Chat App</h3>
-      </div>
-      <div class="project">
-        <img src="blog.png" alt="Blog App">
-        <h3>Blog App</h3>
-      </div>
-      <div class="project">
-        <img src="game.png" alt="Game App">
-        <h3>Game App</h3>
-      </div>
-      <div class="project">
-        <img src="quiz.png" alt="Quiz App">
-        <h3>Quiz App</h3>
+    <div class="about" id="about">
+      <h2>About Me</h2>
+      <p>I'm a passionate web designer with over 5 years of experience in the industry. I love to create websites that are user-friendly, responsive, and aesthetically pleasing. I have worked on various projects for clients from different fields and industries, such as e-commerce, education, entertainment, and more.</p>
+      <div class="row">
+        <div class="col-6">
+          <img src="profile.jpg" alt="Profile Picture">
+        </div>
+        <div class="col-6">
+          <img src="skills.jpg" alt="Skills Chart">
+        </div>
       </div>
     </div>
-
-    <!-- Create a contact section -->
-    <div class="contact" id="contact">
-      <h2>Let's Connect</h2>
-      <i class="fab fa-github"></i>
-      <i class="fab fa-linkedin"></i>
-      <i class="fab fa-twitter"></i>
-      <i class="fas fa-envelope"></i>
-    </div>
-  </div>
-
-  <!-- Create a footer -->
-  <div class="footer">
-    <p>© 2023 Your Name. All rights reserved.</p>
-  </div>
-</body>
-</html>
+    <div class="services" id="services">
+      <h2>My Services</h2>
+      <div class="row">
+        <div class="col-4">
+          <div class="icon">💻</div>
+          <div class="title">Web Design</div>
+          <div class="desc">I design websites that are attractive, intuitive, and responsive. I use the latest web design trends and technologies to create websites that suit your needs and preferences.</div>
+        </div>
+        <div class="col-4">
+          <div class="icon">📷</div>
+          <div class="title">Graphic Design</div>
+          <div class="desc">I create graphic design elements such as logos, icons, banners, flyers, and more. I use Adobe Photoshop, Illustrator, and other tools to create stunning visuals for your brand and website.</div>
+        </div>
+        <div class="col-4">
+          <div class="icon">📈</div>
+          <div class="title">SEO Optimization</div>
+          <div class="desc">I optimize your website for search engines, such as Google, Bing, and Yahoo. I use SEO best practices and techniques to improve your website's ranking, visibility, and traffic.</
